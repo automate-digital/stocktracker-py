@@ -8,7 +8,10 @@ from app.api_client import ApiClient
 class App:
 
     def __init__(self, data_filename):
-        self._portfolio = PortfolioMgr(DataStore(data_filename), ApiClient())
+        try:
+            self._portfolio = PortfolioMgr(DataStore(data_filename), ApiClient())
+        except ValueError:
+            raise
         self._app_date = date.today()
 
     def have_holdings(self):

@@ -76,5 +76,8 @@ def value():
 
 if __name__ == '__main__':
     data_store_filename = 'main-port.csv'
-    app = App(data_store_filename)
+    try:
+        app = App(data_store_filename)
+    except ValueError as err:
+        raise SystemExit(err)
     main()

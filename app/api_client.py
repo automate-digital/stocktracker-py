@@ -16,7 +16,7 @@ class ApiClient:
         else:
             self._api_key = os.environ.get(self.API_KEY_ENV_VAR, None)
             if not self._api_key:
-                self._exit_apikey_error()
+                raise ValueError('AlphaVantage key not found.')
 
     def is_ticker_found(self, ticker):
         results_json = self._do_get_request('search', ticker)
@@ -47,11 +47,6 @@ class ApiClient:
         attributes['apikey'] = self._api_key
         attributes[symbol_attr_name] = ticker
         return attributes
-
-    def _exit_apikey_error(self):
-        msg = '\nAlphaVantage key not found. \n' \
-            f'Please set {self.API_KEY_ENV_VAR} environment variable.'
-        raise SystemExit(msg)
 
     @staticmethod
     def _get(url, params):

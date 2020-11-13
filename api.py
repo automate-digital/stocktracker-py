@@ -9,8 +9,11 @@ api = Flask(__name__)
 
 @api.route('/portfolio', methods=['GET'])
 def _get_portfolio():
-    app = App(DATA_STORE_FILENAME)
-    return app.get_portfolio() if app.have_holdings() else {}
+    try:
+        app = App(DATA_STORE_FILENAME)
+        return app.get_portfolio() if app.have_holdings() else {}
+    except ValueError:
+        abort(500)
 
 
 @api.route('/valuation', methods=['GET'])
