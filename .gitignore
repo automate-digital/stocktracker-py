@@ -3,6 +3,7 @@
 api_inspect_util.py
 .DS_Store
 .idea/
+secret/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
