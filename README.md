@@ -54,6 +54,17 @@ The following operations are supported:
 
     GET /valuation
 
+Example usage:
+
+    $ curl -X POST -d "ticker=ms&units=10"  http://localhost:5000/holding
+    $ curl http://localhost:5000/portfolio
+    {"MS":10}
+    $ curl http://localhost:5000/valuation
+    {"valuation":990.5}
+    $ curl -X DELETE -d "ticker=ms"  http://localhost:5000/holding
+    $ curl http://localhost:5000/portfolio
+    {}
+
 ## Frontend
 
 ### Setup
