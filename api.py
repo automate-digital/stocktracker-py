@@ -6,7 +6,6 @@ from app.app import App
 DATA_STORE_FILENAME = 'main-port.csv'
 api = Flask(__name__)
 
-
 @api.route('/portfolio', methods=['GET'])
 def _get_portfolio():
     try:
@@ -66,4 +65,4 @@ def http_exception_handler(api):
 api.handle_http_exception = http_exception_handler(api)
 
 if __name__ == '__main__':
-    api.run()
+    api.run(host='127.0.0.1', port=5001)

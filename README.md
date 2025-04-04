@@ -21,7 +21,7 @@ Notes:
 
 ### Setup
 
-Requires Python 3.8+
+Requires Python 3.9+
 
 Install project dependencies:
 
@@ -38,7 +38,7 @@ To run the API server:
 
     $ python3 api.py
 
-The API endpoint is exposed on `http://localhost:5000`
+The API endpoint is exposed on `http://127.0.0.1:5001`
 
 ### API Spec
 
@@ -53,6 +53,17 @@ The following operations are supported:
     GET /portfolio
 
     GET /valuation
+
+Example usage:
+
+    $ curl -X POST -d "ticker=ms&units=10"  http://127.0.0.1:5001/holding
+    $ curl http://127.0.0.1:5001/portfolio
+    {"MS":10}
+    $ curl http://127.0.0.1:5001/valuation
+    {"valuation":990.5}
+    $ curl -X DELETE -d "ticker=ms"  http://127.0.0.1:5001/holding
+    $ curl http://127.0.0.1:5001/portfolio
+    {}
 
 ## Frontend
 
