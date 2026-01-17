@@ -16,7 +16,7 @@
     "test:e2e:debug": "PWDEBUG=1 playwright test",
     "test:ui:headed": "playwright test e2e/specs/ui.spec.ts --ui --headed",
     "test:ui:debug": "PWDEBUG=1 playwright test e2e/specs/ui.spec.ts",
-    "prepare": "playwright install --with-deps"
+    "prepare": "npx -y playwright install --with-deps"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",
