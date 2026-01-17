@@ -6,10 +6,7 @@ export default defineConfig({
   retries: 0,
   workers: 1,
   fullyParallel: false,
-  reporter: [
-    ['list'],
-    ['html', { open: 'never' }]
-  ],
+  reporter: [['list']],
   use: {
     baseURL: 'http://localhost:8080',
     trace: 'on-first-retry',
