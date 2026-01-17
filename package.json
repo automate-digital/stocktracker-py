@@ -19,6 +19,7 @@
     "prepare": "playwright install --with-deps"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2"
+    "@playwright/test": "^1.41.2",
+    "playwright": "^1.41.2"
   }
 }
