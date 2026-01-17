@@ -1,3 +1,4 @@
+import os
 import re
 from decimal import Decimal
 
@@ -44,6 +45,9 @@ class PortfolioMgr:
 
     def _validate_ticker(self, ticker):
         self._check_ticker_format(ticker)
+        # Allow tests to disable external validation
+        if os.environ.get('DISABLE_TICKER_VALIDATION', ''):
+            return
         try:
             if self._api_client.is_ticker_found(ticker):
                 return

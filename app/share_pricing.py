@@ -1,7 +1,11 @@
+import os
 from datetime import datetime
 
 
 def get_share_price(api_client, ticker, valuation_date):
+    # Deterministic test mode: always return a fixed price
+    if os.environ.get('MOCK_PRICES', ''):
+        return 123.45
     try:
         time_series_data = api_client.get_time_series_daily(ticker)
         stringified_date = valuation_date.isoformat()

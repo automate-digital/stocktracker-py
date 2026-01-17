@@ -1,0 +1,24 @@
+{
+  "name": "stocktracker-py-tests",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Playwright TypeScript test suite for stocktracker-py",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:api": "playwright test e2e/specs/api.spec.ts",
+    "test:api:validation": "playwright test e2e/specs/api.validation.spec.ts",
+    "test:api:valuation": "playwright test e2e/specs/api.valuation.spec.ts",
+    "test:ui": "playwright test e2e/specs/ui.spec.ts",
+    "test:ui:more": "playwright test e2e/specs/ui.empty-state.spec.ts e2e/specs/ui.validation.spec.ts",
+    "test:ui:valuation": "playwright test e2e/specs/ui.valuation.spec.ts",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "PWDEBUG=1 playwright test",
+    "test:ui:headed": "playwright test e2e/specs/ui.spec.ts --ui --headed",
+    "test:ui:debug": "PWDEBUG=1 playwright test e2e/specs/ui.spec.ts",
+    "prepare": "playwright install --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.2"
+  }
+}

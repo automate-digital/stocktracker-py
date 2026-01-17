@@ -16,7 +16,13 @@ class ApiClient:
         else:
             self._api_key = os.environ.get(self.API_KEY_ENV_VAR, None)
             if not self._api_key:
-                raise ValueError('AlphaVantage key not found.')
+                # In deterministic test modes, allow missing API key
+                # DISABLE_TICKER_VALIDATION skips symbol search
+                # MOCK_PRICES avoids real price lookups
+                if os.environ.get('DISABLE_TICKER_VALIDATION', '') or os.environ.get('MOCK_PRICES', ''):
+                    self._api_key = 'DUMMY-KEY'
+                else:
+                    raise ValueError('AlphaVantage key not found.')
 
     def is_ticker_found(self, ticker):
         results_json = self._do_get_request('search', ticker)
@@ -63,3 +69,6 @@ class ApiClient:
             raise OSError(response['Error Message'])
         if response.get('Note', None):
             raise OSError(response['Note'])
+        # Some AlphaVantage responses include 'Information' instead of 'Note' for issues
+        if response.get('Information', None):
+            raise OSError(response['Information'])
